@@ -13,9 +13,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var label: UILabel!
     
-    var userName = "";
-    
-    
+    var userName = "";    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +27,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     
     @IBAction func changeName(_ sender: Any) {
-        if(self.userName.characters.count > 0){
+        if self.userName.count > 0 {
             self.label.text = "こんにちは、" + self.userName + "さん"
         }else{
             self.label.text = "名前が入力されていません"
@@ -37,11 +35,13 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if(textField == self.textField){
-            self.userName = textField.text!
+        if textField == self.textField {
+            if let text = self.textField.text {
+                userName = text
+            }
             textField.resignFirstResponder()
         }
-        return true;
+        return true
     }
     
 }
